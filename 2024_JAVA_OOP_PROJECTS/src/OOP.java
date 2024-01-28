@@ -1,10 +1,10 @@
 public class OOP {
 	public static void main(String[] args) {
 		User u = new User();
-		u.name = "Maze";
+		u.set_name("Maze");
 		u.membership = "Premium";
 		u.age = 18;
 		
-		System.out.println(u.membership);
+		System.out.println(u.get_name());
 	}
 }
