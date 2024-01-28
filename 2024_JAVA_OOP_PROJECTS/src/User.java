@@ -13,4 +13,22 @@ public class User {
 	String get_name() {
 		return this.name;
 	}
+	
+	void set_membership(String membership) {
+		this.membership = membership;
+	}
+	
+	void set_membership(Membership membership) {
+		this.membership = membership.name();
+	}
+	
+//	ENUM allows the programmer to code or give different options with alphanumeric
+	public enum Membership{
+		Bronze, Silver, Gold;
+	}
+	
+	String get_membership() {
+		return this.membership;
+	}
+	
 }
