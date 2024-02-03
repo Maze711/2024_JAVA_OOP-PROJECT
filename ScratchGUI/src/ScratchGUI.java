@@ -23,7 +23,8 @@ public class ScratchGUI {
 //		frame.getContentPane().setBackground(new Color(0, 0 ,0));
 		*/
 		
-		MyFrame myFrame = new MyFrame(); 
+//		MyFrame myFrame = 
+				new MyFrame(); 
 		//This optional because it can be used when creating different window(Frame) because it have the Class Name
 		// we can use new MyFrame(); when the design is fixed
 	}
