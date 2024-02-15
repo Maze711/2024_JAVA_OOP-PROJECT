@@ -9,8 +9,5 @@ public class CreateObject {
 	public static void main(String[] args) {
 
 		BSCS2C();
-
-		
 	}
-
 }
