@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +14,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class TestFrame extends JFrame {
 	private JTextField textField;
@@ -29,6 +31,9 @@ public class TestFrame extends JFrame {
 				try {
 					TestFrame frame = new TestFrame();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
+					frame.setTitle("Login"); //sets a title of frame
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
