@@ -62,66 +62,19 @@ public class TestFrame extends JFrame {
         getContentPane().add(uiPanel);
         uiPanel.setLayout(null);
 
-        textField_FirstName = new JTextField();
-        textField_FirstName.setColumns(10);
-        textField_FirstName.setBounds(10, 136, 265, 28);
-        uiPanel.add(textField_FirstName);
-
-        JLabel lblNewLabel_2 = new JLabel("FIRST NAME");
-        lblNewLabel_2.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-        lblNewLabel_2.setBounds(10, 111, 265, 14);
-        uiPanel.add(lblNewLabel_2);
-
-        textField_MiddleName = new JTextField();
-        textField_MiddleName.setColumns(10);
-        textField_MiddleName.setBounds(10, 205, 265, 28);
-        uiPanel.add(textField_MiddleName);
-
-        JLabel lblNewLabel_3 = new JLabel("MIDDLE NAME");
-        lblNewLabel_3.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-        lblNewLabel_3.setBounds(10, 180, 265, 14);
-        uiPanel.add(lblNewLabel_3);
-
-        textField_LastName = new JTextField();
-        textField_LastName.setColumns(10);
-        textField_LastName.setBounds(10, 274, 265, 28);
-        uiPanel.add(textField_LastName);
-
-        JLabel lblNewLabel_4 = new JLabel("LAST NAME");
-        lblNewLabel_4.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-        lblNewLabel_4.setBounds(10, 249, 265, 14);
-        uiPanel.add(lblNewLabel_4);
-
         JButton btnNewButton = new JButton("SIGN IN");
         btnNewButton.setBounds(10, 310, 113, 32);
         uiPanel.add(btnNewButton);
 
         JButton btnSignUp = new JButton("SIGN UP");
         btnSignUp.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Get the user input
-                String firstName = textField_FirstName.getText();
-                String middleName = textField_MiddleName.getText();
-                String lastName = textField_LastName.getText();
-                // Insert the user into the database
-                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/samplegui", "root", "")) {
-                    String query = "INSERT INTO user (FirstName, MiddleName, LastName) VALUES (?, ?, ?)";
-                    try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-                        preparedStatement.setString(1, firstName);
-                        preparedStatement.setString(2, middleName);
-                        preparedStatement.setString(3, lastName);
-                        int rowsAffected = preparedStatement.executeUpdate();
-                        if (rowsAffected > 0) {
-                            System.out.println("User registered successfully.");
-                        } else {
-                            System.out.println("Failed to register user.");
-                        }
-                    }
-                } catch (SQLException ex) {
-                    System.err.println("Error registering user: " + ex.getMessage());
-                }
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				TestFrameRegister registration = new TestFrameRegister();
+				registration.setVisible(true);
+				registration.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
         btnSignUp.setBounds(157, 310, 118, 32);
         uiPanel.add(btnSignUp);
     }
