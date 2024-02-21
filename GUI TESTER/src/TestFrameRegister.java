@@ -20,7 +20,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TestFrameRegister extends JFrame {
-
+	
+	private final TestFrameDBCONN conn = new TestFrameDBCONN();
 	private JTextField textField_FirstName;
 	private JTextField textField_MiddleName;
 	private JTextField textField_LastName;
@@ -99,6 +100,32 @@ public class TestFrameRegister extends JFrame {
 		uiPanel.add(btnNewButton);
 
 		JButton btnSignUp = new JButton("SIGN UP");
+		btnSignUp.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        // Get the user input
+		        String firstName = textField_FirstName.getText();
+		        String middleName = textField_MiddleName.getText();
+		        String lastName = textField_LastName.getText();
+		        
+		        // Insert the user into the database using the conn instance
+		        try {
+		            String query = "INSERT INTO user (FirstName, MiddleName, LastName) VALUES (?, ?, ?)";
+		            try (PreparedStatement preparedStatement = conn.getConnection().prepareStatement(query)) {
+		                preparedStatement.setString(1, firstName);
+		                preparedStatement.setString(2, middleName);
+		                preparedStatement.setString(3, lastName);
+		                int rowsAffected = preparedStatement.executeUpdate();
+		                if (rowsAffected > 0) {
+		                    System.out.println("User registered successfully.");
+		                } else {
+		                    System.out.println("Failed to register user.");
+		                }
+		            }
+		        } catch (SQLException ex) {
+		            System.err.println("Error registering user: " + ex.getMessage());
+		        }
+		    }
+		});
 		btnSignUp.setBounds(157, 310, 118, 32);
 		uiPanel.add(btnSignUp);
 	}
