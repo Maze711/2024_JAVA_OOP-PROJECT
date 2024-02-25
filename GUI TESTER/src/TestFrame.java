@@ -19,10 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TestFrame extends JFrame {
-    private JTextField textField_FirstName;
-    private JTextField textField_MiddleName;
-    private JTextField textField_LastName;
-
+	
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {

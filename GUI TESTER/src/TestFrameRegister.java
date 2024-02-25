@@ -123,6 +123,7 @@ public class TestFrameRegister extends JFrame {
 		            }
 		        } catch (SQLException ex) {
 		            System.err.println("Error registering user: " + ex.getMessage());
+		            ex.printStackTrace();
 		        }
 		    }
 		});
