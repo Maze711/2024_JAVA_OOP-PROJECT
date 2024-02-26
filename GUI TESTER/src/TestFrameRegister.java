@@ -24,9 +24,10 @@ public class TestFrameRegister extends JFrame {
 	private JPanel contentPane;
 	
 	private final TestFrameDBCONN conn = new TestFrameDBCONN();
-	private JTextField textField_FirstName;
-	private JTextField textField_MiddleName;
-	private JTextField textField_LastName;
+	private JTextField textField_FullName;
+	private JTextField textField_Password;
+	private JTextField textField_Address;
+	private JTextField textField_Phone;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,55 +68,67 @@ public class TestFrameRegister extends JFrame {
 		getContentPane().add(uiPanel);
 		uiPanel.setLayout(null);
 
-		textField_FirstName = new JTextField();
-		textField_FirstName.setColumns(10);
-		textField_FirstName.setBounds(10, 136, 265, 28);
-		uiPanel.add(textField_FirstName);
+		textField_FullName = new JTextField();
+		textField_FullName.setColumns(10);
+		textField_FullName.setBounds(10, 82, 265, 28);
+		uiPanel.add(textField_FullName);
 
-		JLabel lblNewLabel_2 = new JLabel("FIRST NAME");
+		JLabel lblNewLabel_2 = new JLabel("Full Name");
 		lblNewLabel_2.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-		lblNewLabel_2.setBounds(10, 111, 265, 14);
+		lblNewLabel_2.setBounds(10, 57, 265, 14);
 		uiPanel.add(lblNewLabel_2);
 
-		textField_MiddleName = new JTextField();
-		textField_MiddleName.setColumns(10);
-		textField_MiddleName.setBounds(10, 205, 265, 28);
-		uiPanel.add(textField_MiddleName);
+		textField_Password = new JTextField();
+		textField_Password.setColumns(10);
+		textField_Password.setBounds(10, 146, 265, 28);
+		uiPanel.add(textField_Password);
 
-		JLabel lblNewLabel_3 = new JLabel("MIDDLE NAME");
+		JLabel lblNewLabel_3 = new JLabel("Password");
 		lblNewLabel_3.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(10, 180, 265, 14);
+		lblNewLabel_3.setBounds(10, 121, 265, 14);
 		uiPanel.add(lblNewLabel_3);
 
-		textField_LastName = new JTextField();
-		textField_LastName.setColumns(10);
-		textField_LastName.setBounds(10, 274, 265, 28);
-		uiPanel.add(textField_LastName);
+		textField_Address = new JTextField();
+		textField_Address.setColumns(10);
+		textField_Address.setBounds(10, 210, 265, 28);
+		uiPanel.add(textField_Address);
 
-		JLabel lblNewLabel_4 = new JLabel("LAST NAME");
+		JLabel lblNewLabel_4 = new JLabel("Address");
 		lblNewLabel_4.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
-		lblNewLabel_4.setBounds(10, 249, 265, 14);
+		lblNewLabel_4.setBounds(10, 185, 265, 14);
 		uiPanel.add(lblNewLabel_4);
+		
+		textField_Phone = new JTextField();
+		textField_Phone.setColumns(10);
+		textField_Phone.setBounds(10, 274, 265, 28);
+		uiPanel.add(textField_Phone);
+
+		JLabel lblNewLabel_5 = new JLabel("Phone Number");
+		lblNewLabel_5.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
+		lblNewLabel_5.setBounds(10, 249, 265, 14);
+		uiPanel.add(lblNewLabel_5);
 
 		JButton btnNewButton = new JButton("SIGN IN");
-		btnNewButton.setBounds(10, 310, 113, 32);
+		btnNewButton.setBounds(10, 340, 113, 32);
 		uiPanel.add(btnNewButton);
 
 		JButton btnSignUp = new JButton("SIGN UP");
 		btnSignUp.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        // Get the user input
-		        String firstName = textField_FirstName.getText();
-		        String middleName = textField_MiddleName.getText();
-		        String lastName = textField_LastName.getText();
+		        String fullname = textField_FullName.getText();
+		        String password = textField_Password.getText();
+		        String address = textField_Address.getText();
+		        String phone = textField_Phone.getText();
 		        
 		        // Insert the user into the database using the conn instance
 		        try {
-		            String query = "INSERT INTO user (FirstName, MiddleName, LastName) VALUES (?, ?, ?)";
+		            String query = "INSERT INTO user (FullName, Password, Address, Phone) VALUES (?, ?, ?, ?)";
 		            try (PreparedStatement preparedStatement = conn.getConnection().prepareStatement(query)) {
-		                preparedStatement.setString(1, firstName);
-		                preparedStatement.setString(2, middleName);
-		                preparedStatement.setString(3, lastName);
+		                preparedStatement.setString(1, fullname);
+		                preparedStatement.setString(2, password);
+		                preparedStatement.setString(3, address);
+		                preparedStatement.setString(4, phone);
 		                int rowsAffected = preparedStatement.executeUpdate();
 		                if (rowsAffected > 0) {
 		                    System.out.println("User registered successfully.");
@@ -129,7 +142,7 @@ public class TestFrameRegister extends JFrame {
 		        }
 		    }
 		});
-		btnSignUp.setBounds(157, 310, 118, 32);
+		btnSignUp.setBounds(157, 340, 118, 32);
 		uiPanel.add(btnSignUp);
 	}
 }
