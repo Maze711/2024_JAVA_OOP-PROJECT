@@ -2,7 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,13 +14,11 @@ import javax.swing.JScrollPane;
 
 public class TestFrameHome extends JFrame {
 
-	private JPanel contentPane;
+
 	DefaultTableModel model;
+	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,9 +35,6 @@ public class TestFrameHome extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public TestFrameHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 800);
