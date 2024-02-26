@@ -28,6 +28,7 @@ public class TestFrameRegister extends JFrame {
 	private JTextField textField_Password;
 	private JTextField textField_Address;
 	private JTextField textField_Phone;
+	private JTextField textField_Course;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -107,9 +108,20 @@ public class TestFrameRegister extends JFrame {
 		lblNewLabel_5.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
 		lblNewLabel_5.setBounds(10, 249, 265, 14);
 		uiPanel.add(lblNewLabel_5);
+		
+		textField_Course = new JTextField();
+		textField_Course.setColumns(10);
+		textField_Course.setBounds(10, 330, 265, 28);
+		uiPanel.add(textField_Course);
+
+		JLabel lblNewLabel_6 = new JLabel("Course");
+		lblNewLabel_6.setFont(new Font("Source Code Pro", Font.PLAIN, 18));
+		lblNewLabel_6.setBounds(10, 305, 265, 14);
+		uiPanel.add(lblNewLabel_6);
+
 
 		JButton btnNewButton = new JButton("SIGN IN");
-		btnNewButton.setBounds(10, 340, 113, 32);
+		btnNewButton.setBounds(10, 369, 113, 32);
 		uiPanel.add(btnNewButton);
 
 		JButton btnSignUp = new JButton("SIGN UP");
@@ -120,15 +132,17 @@ public class TestFrameRegister extends JFrame {
 		        String password = textField_Password.getText();
 		        String address = textField_Address.getText();
 		        String phone = textField_Phone.getText();
+		        String course = textField_Course.getText();
 		        
 		        // Insert the user into the database using the conn instance
 		        try {
-		            String query = "INSERT INTO user (FullName, Password, Address, Phone) VALUES (?, ?, ?, ?)";
+		            String query = "INSERT INTO user (FullName, Password, Address, Phone, Course) VALUES (?, ?, ?, ?, ?)";
 		            try (PreparedStatement preparedStatement = conn.getConnection().prepareStatement(query)) {
 		                preparedStatement.setString(1, fullname);
 		                preparedStatement.setString(2, password);
 		                preparedStatement.setString(3, address);
 		                preparedStatement.setString(4, phone);
+		                preparedStatement.setString(5, course);
 		                int rowsAffected = preparedStatement.executeUpdate();
 		                if (rowsAffected > 0) {
 		                    System.out.println("User registered successfully.");
@@ -142,7 +156,7 @@ public class TestFrameRegister extends JFrame {
 		        }
 		    }
 		});
-		btnSignUp.setBounds(157, 340, 118, 32);
+		btnSignUp.setBounds(157, 369, 118, 32);
 		uiPanel.add(btnSignUp);
 	}
 }
