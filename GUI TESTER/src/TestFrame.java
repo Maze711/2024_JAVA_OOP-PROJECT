@@ -19,6 +19,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TestFrame extends JFrame {
+
+	private JPanel contentPane;
 	
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -59,9 +61,17 @@ public class TestFrame extends JFrame {
         getContentPane().add(uiPanel);
         uiPanel.setLayout(null);
 
-        JButton btnNewButton = new JButton("SIGN IN");
-        btnNewButton.setBounds(10, 310, 113, 32);
-        uiPanel.add(btnNewButton);
+        JButton btnSignIn = new JButton("SIGN IN");
+        btnSignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TestFrameHome home = new TestFrameHome();
+				home.setVisible(true);
+				home.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+        btnSignIn.setBounds(10, 310, 113, 32);
+        uiPanel.add(btnSignIn);
 
         JButton btnSignUp = new JButton("SIGN UP");
         btnSignUp.addActionListener(new ActionListener() {

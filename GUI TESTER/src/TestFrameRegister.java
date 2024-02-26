@@ -20,6 +20,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TestFrameRegister extends JFrame {
+
+	private JPanel contentPane;
 	
 	private final TestFrameDBCONN conn = new TestFrameDBCONN();
 	private JTextField textField_FirstName;
